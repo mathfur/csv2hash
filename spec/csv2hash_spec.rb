@@ -62,8 +62,38 @@ describe Sheet do
   end
 
   describe "#min_y" do
-    TODO 2011-12-05 続き書く(残り: Sheet後半、Translatorのテスト)
+    it "left_columnが空ならnilを返すこと" do
+      @sheet1.stub(:left_column => [])
+      @sheet1.min_y.should be_nil
+    end
+    it "left_columnが空白を持っていないなら0が返ること" do
+      @sheet1.stub(:left_column => %w{a b c})
+      @sheet1.min_y.should == 0
+    end
+    it "left_columnが空白を1個持っているなら1を返すこと" do
+      @sheet1.stub(:left_column => [' ', 'a'])
+      @sheet1.min_y.should == 1
+    end
   end
+
+  describe "#min_x" do
+    it "top_rowが空ならnilを返すこと" do
+      @sheet1.stub(:top_row => [])
+      @sheet1.min_x.should be_nil
+    end
+    it "top_rowが空白を持っていないなら0が返ること" do
+      @sheet1.stub(:top_row => %w{a b c})
+      @sheet1.min_x.should == 0
+    end
+    it "top_rowが空白を1個持っているなら1を返すこと" do
+      @sheet1.stub(:top_row => [' ', 'a'])
+      @sheet1.min_x.should == 1
+    end
+  end
+
+  TODO 2011-12-06 Sheet#valuesという変数名は実態と合っていないので変更する
+
+    TODO 2011-12-05 続き書く(残り: Sheet後半、Translatorのテスト)
 end
 
 describe CSV2Hash::Range2D do
