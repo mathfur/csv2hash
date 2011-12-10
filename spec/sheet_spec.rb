@@ -54,4 +54,43 @@ describe CSV2Hash::Sheet do
       @sheet.blank_height.should == 1
     end
   end
+
+  describe "#primary_area" do
+    it "@rowsが4マスで左上のみブランクの場合、左側の1セルのみがprimary_areaとなること" do
+      @sheet.stub(:rows => [['', 'bb'], %w{cc dd}])
+      result = @sheet.primary_area.cells
+      @sheet.primary_area.x1.should == 0
+      @sheet.primary_area.y1.should == 1
+      @sheet.primary_area.x2.should == 0
+      @sheet.primary_area.y2.should == 1
+      result.should have(1).items
+      result.first.value.should == 'cc'
+    end
+  end
+
+  describe "#secondary_area" do
+    it "@rowsが4マスで左上のみブランクの場合、右上の1セルのみがsecondary_areaとなること" do
+      @sheet.stub(:rows => [['', 'bb'], %w{cc dd}])
+      result = @sheet.secondary_area.cells
+      @sheet.secondary_area.x1.should == 1
+      @sheet.secondary_area.y1.should == 0
+      @sheet.secondary_area.x2.should == 1
+      @sheet.secondary_area.y2.should == 0
+      result.should have(1).items
+      result.first.value.should == 'bb'
+    end
+  end
+
+  describe "#value_area" do
+    it "@rowsが4マスで左上のみブランクの場合、右下の1セルのみがvalue_areaとなること" do
+      @sheet.stub(:rows => [['', 'bb'], %w{cc dd}])
+      result = @sheet.value_area.cells
+      @sheet.value_area.x1.should == 1
+      @sheet.value_area.y1.should == 1
+      @sheet.value_area.x2.should == 1
+      @sheet.value_area.y2.should == 1
+      result.should have(1).items
+      result.first.value.should == 'dd'
+    end
+  end
 end

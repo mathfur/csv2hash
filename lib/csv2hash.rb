@@ -1,1 +1,1 @@
-require "csv2hash/sheet"
+require "csv2hash/csv2hash"

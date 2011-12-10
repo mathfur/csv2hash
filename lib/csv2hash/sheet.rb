@@ -1,5 +1,6 @@
 require "csv"
 require "csv2hash/helper"
+require "csv2hash/area"
 
 class CSV2Hash
   class Sheet
@@ -25,7 +26,19 @@ class CSV2Hash
 
     def blank_height
       nil if rows.length == 0
-      rows.index{|r| r.first != ''}
+      rows.index{|r| r.first.present?}
+    end
+
+    def primary_area
+      Area.new(self, 0, blank_height, blank_width-1, height-1)
+    end
+
+    def secondary_area
+      Area.new(self, blank_width, 0, width-1, blank_height-1)
+    end
+
+    def value_area
+      Area.new(self, blank_width, blank_height, width-1, height-1)
     end
   end
 end
