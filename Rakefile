@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "csv2hash"
   gem.homepage = "http://github.com/mathfur/csv2hash"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{csvに記述された階層構造をHashに変換する}
+  gem.description = %Q{csvに記述された階層構造をHashに変換する}
   gem.email = "mathfuru@gmail.com"
   gem.authors = ["mathfuru"]
   # dependencies defined in Gemfile
