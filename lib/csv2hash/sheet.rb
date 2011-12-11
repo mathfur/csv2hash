@@ -8,7 +8,10 @@ class CSV2Hash
 
     def initialize(csv_fname)
       @csv_fname = csv_fname
-      @rows = CSV.foreach(csv_fname)
+      @rows = CSV.read(csv_fname)
+      while (1 <= @rows.length) && @rows.last.all?{|elem| elem.blank?}
+        @rows.pop
+      end
     end
 
     def width

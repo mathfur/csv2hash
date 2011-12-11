@@ -3,7 +3,7 @@ require "lib/csv2hash"
 describe CSV2Hash::Sheet do
   before(:each) do
     @csv_fname = stub("csv_fname")
-    CSV.stub(:foreach).with(@csv_fname).and_return([])
+    CSV.stub(:read).with(@csv_fname).and_return([])
     @sheet = CSV2Hash::Sheet.new(@csv_fname)
   end
 
