@@ -7,4 +7,5 @@ class CSV2Hash
       cell.secondary_keys #=> まだない
       cell.value
     end
+  end
 end
