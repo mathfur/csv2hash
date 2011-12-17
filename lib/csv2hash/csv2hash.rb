@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 require "csv2hash/sheet"
 
 class CSV2Hash

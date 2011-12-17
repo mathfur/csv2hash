@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 require "csv"
 require "csv2hash/helper"
 require "csv2hash/area"

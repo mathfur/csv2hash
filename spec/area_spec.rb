@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 require "lib/csv2hash"
 
 describe CSV2Hash::Area do
