@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 class CSV2Hash
   class Cell
     attr_reader :sheet, :x, :y, :value
